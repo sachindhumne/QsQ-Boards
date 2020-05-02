@@ -1,0 +1,110 @@
+<div class="homeContainer">
+  <app-header></app-header>
+  <div class="contentContainer">
+    <mat-sidenav-container fullScreen class="navContainer">
+      <mat-sidenav class="sideNavContainer" mode="side" opened>
+        <!-- <mat-nav-list>
+          <a class="sideNavItem"> -->
+        <div class="home-nav-item"  (click)="navigateToHome()">
+          <span id="home-nav-img">
+            <img src="../../../assets/project.png" class="avatar" alt="Projects" />
+          </span>
+          <span class="projectText">Projects</span>
+        </div>
+        <div class="home-nav-item"  [routerLink]="['/', currentUserName, 'tasks']">
+          <span id="home-nav-img">
+            <img src="../../../assets/inbox.png" class="avatar" alt="Projects" />
+          </span>
+          <span class="projectText">Inbox</span>
+        </div>
+        <!-- </a>
+        </mat-nav-list> -->
+      </mat-sidenav>
+      <mat-sidenav-content fullscreen>
+        <div class="topButtons">
+          <button class="mat-raised-button mat-primary projectButton" (click)="openProjectDialog()">
+            <mat-icon>add</mat-icon>
+            New Project
+          </button>
+          <div class="search">
+            <span class="fa fa-search searchIcn"></span>
+            <input placeholder="Filter Projects By Name" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <br><br><br>
+        <div class="cardContainer">
+
+          <div *ngIf="!(projectList?.length > 0)">
+            <p class="noProjectsLabel">No Projects available! Click on New Project button to create a new project</p>
+
+          </div>
+          <div *ngIf="projectList?.length > 0">
+            <div class="noProjectsLabel" *ngIf="(projectList | projectFilter:searchTerm).length === 0">
+              No search results found!
+            </div>
+            <div class="card" *ngFor="let project of projectList | projectFilter:searchTerm; let i=index">
+              <div class="topCardContainer" *ngIf="i<3">
+                <mat-card class="topCard">
+                  <div class="topTitlecontainer">
+                    <div>
+                      <div class="flex-container hoverClass" [routerLink]="['/project-dashboard',project._id]">
+                        <div id="profileImage" [ngStyle]="{'background': getRandomColor(i)}">
+                          {{getProjectTitleAvatar(project)}}</div>
+                        <div class="titleDescriptionContainer">
+
+                          <div>
+                            <mat-card-title><span class="projectTitle">{{getProjectTitle(project.title)}}</span>
+                            </mat-card-title>
+                          </div>
+
+                          <div class="topDescriptionContainer">{{project.description}}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <mat-card-footer>
+                    <!-- <mat-chip class="memberChip">Owner: {{project.owner}}</mat-chip> -->
+                    <mat-icon *ngIf="currentUserName==project.owner" class="deleteIcon"
+                      (click)="confirmDelete(project._id,project.title)">delete</mat-icon>
+                    <mat-icon *ngIf="currentUserName==project.owner" class="editIcon"
+                      (click)="openUpdateDialog(project)">edit</mat-icon>
+                  </mat-card-footer>
+                </mat-card>
+              </div>
+              <div class="bottomProjectContainer" *ngIf="i>=3">
+                <mat-card class="bottomCards">
+                  <span>
+                    <mat-card-content class="card-container-left">
+                      <div class="bottomTitleContainer">
+                        <div class="flex-container hoverClass" [routerLink]="['/project-dashboard',project._id]">
+                          <div id="bottomprofileImage" [ngStyle]="{'background': getRandomColor(i)}">
+                            {{getProjectTitleAvatar(project)}}</div>
+                          <div class="titleDescriptionContainer">
+                            <div class="mat-title projectTitle">{{project.title}}</div>
+                            <div class="bottomDescriptionContainer">{{project.description}}</div>
+                            <!-- <div>
+                              <mat-chip class="memberChip bottomOwner">Owner: {{project.owner}}</mat-chip>
+                            </div> -->
+                          </div>
+                        </div>
+
+                        <div *ngIf="currentUserName==project.owner" class="bottomDeleteIcon">
+                          <mat-icon class="deleteIcon" (click)="confirmDelete(project._id,project.title)">delete
+                          </mat-icon>
+                          <mat-icon class="editIcon" (click)="openUpdateDialog(project)">edit</mat-icon>
+
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </span>
+
+                </mat-card>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</div>

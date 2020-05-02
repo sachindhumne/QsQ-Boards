@@ -1,0 +1,31 @@
+<div class="headerContainer">
+  <mat-toolbar>
+    <!-- <button mat-button (click)="navigateToHome()">
+      <label class="profileName">Home</label>
+    </button> -->
+    <img class="qsqIcon" src="../../../assets/qsqlogo_blue.png" (click)="navigateToHome()" alt="QSQ Boards" />
+    <span class="qsqboards" (click)="navigateToHome()">Qsqboards</span>
+
+
+    <div class="alignmentMenu">
+      <button mat-button (click)="navigateToHome()"><span class="profileName">Home</span></button>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <img *ngIf="profile" [src]="url ? url :'../../../assets/blank-profile-picture.png'" alt="Profile name" class="avatar"
+          onerror="this.src='../../../assets/avatar-default-icon.png'" />
+        <img *ngIf="!profile" src="../../../assets/avatar-default-icon.png" class="avatar" alt="Profile" />
+        <label class="profileName">{{profile.userName}}</label>
+      </button>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editProfile()">
+        <i class="fa fa-user-circle-o fa-lg"> Profile</i>
+      </button>
+      <button mat-menu-item (click)="logoutProfile()" routerLinkActive="active">
+        <i class="fa fa-sign-out fa-lg"> Logout</i>
+      </button>
+
+    </mat-menu>
+
+  </mat-toolbar>
+
+</div>

@@ -1,0 +1,41 @@
+.avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.qsqboards {
+  font-size: 30px;
+  font-weight: 1000;
+  color: #3f51b5;
+  cursor: pointer;
+}
+mat-toolbar {
+  background-color: white;
+}
+.qsqIcon {
+  width: 100px;
+  height: 75px;
+  cursor: pointer;
+}
+
+.alignmentMenu {
+  margin-left: 60%;
+}
+
+mat-toolbar {
+  height: 60px;
+  border-bottom: 0.1px solid;
+  border-color: lightgray;
+}
+
+.profileName {
+  margin-left: 10px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.homeBtn {
+  display: inline-block;
+}

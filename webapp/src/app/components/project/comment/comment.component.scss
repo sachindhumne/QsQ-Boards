@@ -1,0 +1,48 @@
+.commentsFormContainer {
+width: 50vw;
+height: 4vw;
+}
+
+mat-card {
+    box-shadow: none !important;
+    padding: 0px !important;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 16px;
+}
+
+.commentButton {
+    float: right;
+    margin-right: 4.5vw;
+}
+
+.mat-card-content {
+    margin-top: 1vw;
+    margin-bottom: 2vw;
+    margin-left: 2vw;
+}
+
+// .mat-form-field-underline {
+//     margin-left: 2vw;
+// }
+
+// .mat-form-field {
+//     margin-left: 2vw;
+// }
+
+.authorContainer {
+    display: flex;
+}
+
+.commentContainer {
+    margin-left: 3vw;
+}
+
+.authorName {
+    margin-left: 0.5vw;
+}

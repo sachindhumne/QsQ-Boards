@@ -1,0 +1,205 @@
+<div class="root">
+  <div class="topButtons">
+    <button
+      class="mat-raised-button mat-primary userStoryButton"
+      (click)="createUserStory()"
+    >
+      <div class="btnAddUserStoryContainer">
+        <mat-icon>add</mat-icon>
+        <label>Add User Story</label>
+      </div>
+    </button>
+  </div>
+  <div class="board">
+    <!-- <p class="board-name">{{ board.name }}</p> -->
+
+    <div class="board-wrapper" cdkDropListGroup>
+      <div class="board-columns">
+        <div class="board-column" *ngIf="todoColumn">
+          <div class="column-title">
+            {{ todoColumn.name }}
+          </div>
+          <div
+            class="target-list"
+            cdkDropList
+            [cdkDropListData]="todoColumn.userStories"
+            (cdkDropListDropped)="dropInTodo($event)"
+          >
+            <mat-grid-list
+              cols="1"
+              [cdkDragData]="item"
+              *ngFor="let item of todoColumn.userStories; let i = index"
+              cdkDrag
+            >
+              <mat-card class="task task-todo">
+                <div class="usTitleContainer">
+                  <mat-card-title
+                    ><span class="userStoryTitle">{{ item.title }}</span>
+                  </mat-card-title>
+                  <div class="storyPointContainer">
+                    <mat-label>{{ item.storyPoints }}</mat-label>
+                  </div>
+                </div>
+                <div>
+                  <div class="topDescriptionContainer">
+                    {{ item.description }}
+                  </div>
+                </div>
+
+                <mat-chip-list>
+                  <div class="actionsContainer">
+                    <mat-chip class="statusTodoChip">
+                      {{ item.status }}
+                    </mat-chip>
+                    <div class="priorityContainer">
+                      <i
+                        class="fa fa-exclamation-circle"
+                        ngClass="{{ item.priority }}"
+                      ></i
+                      ><span ngClass="{{ item.priority }}">{{
+                        item.priority
+                      }}</span>
+                    </div>
+                    <div class="innerActions">
+                      <mat-icon
+                        class="editIcon"
+                        (click)="editTheStory(item)"
+                        color="primary"
+                        >edit</mat-icon
+                      >
+                      <mat-icon class="deleteIcon" (click)="deleteStory(item)"
+                        >delete</mat-icon
+                      >
+                    </div>
+                  </div>
+                </mat-chip-list>
+              </mat-card>
+            </mat-grid-list>
+          </div>
+        </div>
+        <div class="board-column" *ngIf="inProgressColumn">
+          <div class="column-title">
+            {{ inProgressColumn.name }}
+          </div>
+          <div
+            class="target-list"
+            cdkDropList
+            [cdkDropListData]="inProgressColumn.userStories"
+            (cdkDropListDropped)="dropInProgress($event)"
+          >
+            <mat-grid-list
+              cols="1"
+              [cdkDragData]="item"
+              *ngFor="let item of inProgressColumn.userStories; let i = index"
+              cdkDrag
+            >
+              <mat-card class="task task-progress">
+                <div class="usTitleContainer">
+                  <mat-card-title
+                    ><span class="userStoryTitle">{{ item.title }}</span>
+                  </mat-card-title>
+                  <div class="storyPointContainer">
+                    <mat-label>{{ item.storyPoints }}</mat-label>
+                  </div>
+                </div>
+                <div>
+                  <div class="topDescriptionContainer">
+                    {{ item.description }}
+                  </div>
+                </div>
+                <mat-chip-list>
+                  <div class="actionsContainerProgress">
+                    <mat-chip class="statusTodoChip">
+                      {{ item.status }}
+                    </mat-chip>
+                    <div class="priorityContainer">
+                      <i
+                        class="fa fa-exclamation-circle"
+                        ngClass="{{ item.priority }}"
+                      ></i
+                      ><span ngClass="{{ item.priority }}">{{
+                        item.priority
+                      }}</span>
+                    </div>
+                    <div class="innerActionsProgress">
+                      <mat-icon
+                        class="editIcon"
+                        (click)="editTheStory(item)"
+                        color="primary"
+                        >edit</mat-icon
+                      >
+                      <mat-icon class="deleteIcon" (click)="deleteStory(item)"
+                        >delete</mat-icon
+                      >
+                    </div>
+                  </div>
+                </mat-chip-list>
+              </mat-card>
+            </mat-grid-list>
+          </div>
+        </div>
+        <div class="board-column" *ngIf="doneColumn">
+          <div class="column-title">
+            {{ doneColumn.name }}
+          </div>
+          <div
+            class="target-list"
+            cdkDropList
+            [cdkDropListData]="doneColumn.userStories"
+            (cdkDropListDropped)="dropDone($event)"
+          >
+            <mat-grid-list
+              cols="1"
+              [cdkDragData]="item"
+              *ngFor="let item of doneColumn.userStories; let i = index"
+              cdkDrag
+            >
+              <mat-card class="task task-done">
+                <div class="usTitleContainer">
+                  <mat-card-title
+                    ><span class="userStoryTitle">{{ item.title }}</span>
+                  </mat-card-title>
+                  <div class="storyPointContainer">
+                    <mat-label>{{ item.storyPoints }}</mat-label>
+                  </div>
+                </div>
+                <div>
+                  <div class="topDescriptionContainer">
+                    {{ item.description }}
+                  </div>
+                </div>
+                <mat-chip-list>
+                  <div class="actionsContainer">
+                    <mat-chip class="statusTodoChip">
+                      {{ item.status }}
+                    </mat-chip>
+                    <div class="priorityContainer">
+                      <i
+                        class="fa fa-exclamation-circle"
+                        ngClass="{{ item.priority }}"
+                      ></i
+                      ><span ngClass="{{ item.priority }}">{{
+                        item.priority
+                      }}</span>
+                    </div>
+                    <div class="innerActions">
+                      <mat-icon
+                        class="editIcon"
+                        (click)="editTheStory(item)"
+                        color="primary"
+                        >edit</mat-icon
+                      >
+                      <mat-icon class="deleteIcon" (click)="deleteStory(item)"
+                        >delete</mat-icon
+                      >
+                    </div>
+                  </div>
+                </mat-chip-list>
+              </mat-card>
+            </mat-grid-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

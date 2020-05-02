@@ -1,0 +1,173 @@
+.full-width {
+  width: 90%;
+}
+
+.half-width {
+  width: 65%;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+.half-width {
+  width: 50%;
+  margin: auto;
+  padding: 1%;
+}
+
+.my-form{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.ustoryEditContainer {
+  margin-left: 5%;
+  width: 80%;
+  background: white;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  align-items: center;
+  box-shadow: 10px 10px 10px 10px whitesmoke;
+  
+  & .mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.mat-card-header {
+  justify-content: center;
+}
+
+.Low {
+  color: green;
+}
+
+.Done {
+  background: green;
+  color: white;
+}
+
+.New {
+    background: #ff9504;
+    color: white;
+}
+
+.noTasksLabel {
+  padding: 40px;
+}
+
+.Progress {
+  background: #3f51b5;
+  color: white;
+}
+
+.taskButton {
+  float: right;
+  margin-right: 10%;
+  margin-top: 1%;
+}
+
+.taskContainer {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+.btnAddTasksContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  & label {
+    cursor: pointer;
+  }
+}
+
+.High {
+  color: red;
+}
+
+.Medium {
+  color: #ff9504;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    border-radius: 16px;
+}
+
+.deleteIcon {
+  color: red;
+  cursor: pointer;
+}
+.editIcon {
+  color: #3f51b5;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.commentIcon {
+  margin-right: 10px;
+  cursor: pointer;
+  color: seagreen;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-card-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.full-width {
+  width: 70%;
+}
+
+.todo-table {
+  border: solid 1px #DDEEEE;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font: normal 13px Arial, sans-serif;
+  margin: 20px 200px 0px 200px;
+}
+.todo-table thead th {
+  background-color: #DDEFEF;
+  border: solid 1px #DDEEEE;
+  color: #336B6B;
+  padding: 15px;
+  text-align: left;
+  text-shadow: 1px 1px 1px #fff;
+}
+.todo-table tbody td {
+  border: solid 1px #DDEEEE;
+  color: #333;
+  padding: 10px;
+  text-shadow: 1px 1px 1px #fff;
+}

@@ -1,0 +1,236 @@
+<mat-tab-group animationDuration="0ms">
+  <mat-tab class="tabLabel" label="Edit UserStory">
+    <form [formGroup]="updateStoryForm" (ngSubmit)="onSubmit()">
+      <mat-card-header>
+        <mat-card-title><h2>Update User Story</h2></mat-card-title>
+      </mat-card-header>
+      <mat-dialog-content>
+        <div class="ustoryEditContainer">
+          <mat-card-content>
+            <mat-form-field class="half-width">
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="Title" formControlName="title" />
+              <mat-error
+                *ngIf="
+                  !updateStoryForm.controls['title'].valid &&
+                  updateStoryForm.controls['title'].touched
+                "
+              >
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="half-width">
+              <mat-select placeholder="Priority" formControlName="priority">
+                <mat-option *ngFor="let p of priorities" [value]="p.value">{{
+                  p.viewValue
+                }}</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  !updateStoryForm.controls['priority'].valid &&
+                  updateStoryForm.controls['priority'].touched
+                "
+              >
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="half-width">
+              <mat-select placeholder="Status" formControlName="status">
+                <mat-option *ngFor="let s of status" [value]="s.value">{{
+                  s.viewValue
+                }}</mat-option>
+              </mat-select>
+              <!-- <input matInput placeholder="Status" formControlName="status"> -->
+              <mat-error
+                *ngIf="
+                  !updateStoryForm.controls['status'].valid &&
+                  updateStoryForm.controls['status'].touched
+                "
+              >
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="half-width">
+              <input
+                matInput
+                placeholder="Story Points"
+                formControlName="storyPoints"
+                pattern="[0-9]*"
+              />
+              <mat-error
+                *ngIf="
+                  !updateStoryForm.controls['storyPoints'].valid &&
+                  updateStoryForm.controls['storyPoints'].touched
+                "
+              >
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="half-width">
+              <mat-label>Description</mat-label>
+              <textarea
+                matInput
+                placeholder="Description"
+                rows="12"
+                formControlName="description"
+              ></textarea>
+              <mat-error
+                *ngIf="
+                  !updateStoryForm.controls['description'].valid &&
+                  updateStoryForm.controls['description'].touched
+                "
+              >
+              </mat-error> </mat-form-field
+            ><br />
+            <mat-dialog-actions class="form-group half-width">
+              <button
+                mat-button
+                color="primary"
+                type="submit"
+                [disabled]="updateStoryForm.invalid"
+                class="mat-background-primary text-floral-white"
+              >
+                Submit
+              </button>
+              <button
+                mat-button
+                color="accent"
+                type="submit"
+                class="mat-background-primary text-floral-white"
+              >
+                Cancel
+              </button>
+            </mat-dialog-actions>
+          </mat-card-content>
+        </div>
+      </mat-dialog-content>
+    </form>
+  </mat-tab>
+  <mat-tab label="Edit Task">
+          <div>
+            <button
+              class="mat-raised-button mat-primary taskButton"
+              (click)="createTask()"
+            >
+              <div class="btnAddTasksContainer">
+                <mat-icon>add</mat-icon>
+                <label> Add Task </label>
+              </div>
+            </button>
+          </div>
+          <div *ngIf="!editStory || editStory.tasks.length === 0">
+            <p class="noTasksLabel">No Tasks available!</p>
+          </div>
+          <div *ngIf="editStory.tasks.length > 0" class="taskContainer">
+            <div *ngIf="editStory && editStory.tasks">
+              <table
+                mat-table
+                [dataSource]="editStory.tasks"
+                class="mat-elevation-z8"
+              >
+                <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Title Column -->
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef>Title</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ element.title }}
+                  </td>
+                </ng-container>
+
+                <!-- Description Column -->
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef>Description</th>
+                  <td mat-cell *matCellDef="let element">
+                    {{ getElementDesc(element.description) }}
+                  </td>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef>Status</th>
+                  <td mat-cell *matCellDef="let element">
+                    <mat-chip-list>
+                      <mat-chip class="{{ element.status }}">
+                        {{ element.status }}
+                      </mat-chip>
+                    </mat-chip-list>
+                  </td>
+                </ng-container>
+
+                <!-- Priority Column -->
+                <ng-container matColumnDef="priority">
+                  <th mat-header-cell *matHeaderCellDef>Priority</th>
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    class="{{ element.priority }}"
+                  >
+                    {{ element.priority }}
+                  </td>
+                </ng-container>
+
+                <!-- Assignee Column -->
+                <ng-container matColumnDef="assignee">
+                  <th mat-header-cell *matHeaderCellDef>Assignee</th>
+                  <td mat-cell *matCellDef="let element">
+                    <mat-chip-list>
+                      <mat-chip
+                        *ngIf="element.assignee && element.assignee.userName"
+                        class="assigneeChip"
+                        [removable]="false"
+                      >
+                        <img
+                          class="avatar"
+                          [src]="
+                            element.assignee.image != null
+                              ? element.assignee.image
+                              : emptyImgUrl
+                          "
+                          onerror="this.src='../../../assets/blank-profile-picture.png'"
+                        />
+                        {{
+                          element.assignee.userName
+                            ? element.assignee.userName
+                            : ""
+                        }}
+                      </mat-chip>
+                      <div
+                        *ngIf="!element.assignee || !element.assignee.userName"
+                        class="assigneeChip"
+                      >
+                        {{ "" }}
+                      </div>
+                    </mat-chip-list>
+                  </td>
+                </ng-container>
+                <!-- Actions Column -->
+                <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef>Actions</th>
+                  <td mat-cell *matCellDef="let element; let i = index">
+                    <mat-icon class="commentIcon" (click)="commentTask(element)">comment</mat-icon>
+                    <mat-icon class="editIcon" (click)="updateTask(element)"
+                      >edit</mat-icon
+                    >
+                    <mat-icon
+                      class="deleteIcon"
+                      (click)="deleteTask(element)"
+                      >delete</mat-icon
+                    >
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedTaskColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedTaskColumns"
+                ></tr>
+                
+              </table>
+            </div>
+            <div *ngIf="!editStory || !editStory.tasks">
+              <label>No Tasks for the current User Story !</label>
+            </div>
+          </div>
+  </mat-tab>
+</mat-tab-group>

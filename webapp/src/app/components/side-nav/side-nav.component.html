@@ -1,0 +1,29 @@
+<app-header></app-header>
+<mat-sidenav-container fullScreen class="navContainer">
+  <mat-sidenav class="sideNavContainer" mode="side" opened>
+    <mat-nav-list>
+      <h3 matSubheader class="projectText">Project</h3>
+      <div mat-list-item class="side-nav-item"  routerLink="overview" [routerLinkActive]="['is-active']">
+        <img src="../../../assets/overview.png" class="avatar" alt="Projects" /> 
+        Overview 
+      </div>
+      <div mat-list-item class="side-nav-item" routerLink="board" [routerLinkActive]="['is-active']">
+        <img src="../../../assets/board.png" class="avatar" alt="Projects" />
+        Board
+      </div>
+      <div mat-list-item class="side-nav-item" routerLink="backlog" [routerLinkActive]="['is-active']">
+        <img src="../../../assets/backlog.png" class="avatar" alt="Projects" />
+        Backlog
+      </div>
+      <div mat-list-item class="side-nav-item" routerLink="analytics" [routerLinkActive]="['is-active']">
+        <img src="../../../assets/analytics.png" class="avatar" alt="Projects" />
+        Analytics
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

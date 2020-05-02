@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div fxLayout="column" fxLayoutAlign="start stretch" class="cards">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="90%" fxFlex.md="66.6667%" fxFlex.gt-md="50%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h2>Update Your Profile</h2>
+          </mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header><br>
+        <mat-card-content>
+          <img mat-card-image *ngIf="socialImage" src={{socialImage}} alt="Profile Picture" class="img-width"
+            onerror="this.src='../../../assets/blank-profile-picture.png'"><br>
+          <div class="profilePic" *ngIf="!socialImage">
+            <label class="hoverable" for="fileInput">
+              <img [src]="url ? url :'../../../assets/blank-profile-picture.png'"> 
+              <div class="hover-text">Change Pic</div>
+              <div class="background"></div>
+            </label>
+            <br/>
+            <input id="fileInput" type='file' (change)="onSelectFile($event)">
+            <button mat-stroked-button color="warn" class="deleteBtn" *ngIf="url" (click)="delete()" >Remove</button>
+
+          </div>
+            
+          <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="half-width">
+              <mat-label>UserName</mat-label>
+              <input matInput placeholder="User Name" formControlName="userName">
+              <mat-error *ngIf="!updateForm.controls['userName'].valid && updateForm.controls['userName'].touched">
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="half-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" formControlName="emailId">
+              <mat-error *ngIf="!updateForm.controls['emailId'].valid && updateForm.controls['emailId'].touched">
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="half-width">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="Password" formControlName="password">
+              <mat-error *ngIf="!updateForm.controls['password'].valid && updateForm.controls['password'].touched">
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="half-width">
+              <input matInput type="password" placeholder="Password" formControlName="conPassword">
+              <mat-label>Confirm Password</mat-label>
+              <mat-error
+                *ngIf="!updateForm.controls['conPassword'].valid && updateForm.controls['conPassword'].touched">
+              </mat-error>
+            </mat-form-field>
+
+            <mat-card-actions class="full-width">
+              <button mat-button color="primary" type="submit" [disabled]="updateForm.invalid"
+                class="mat-background-primary text-floral-white">Submit</button>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

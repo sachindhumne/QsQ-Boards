@@ -1,0 +1,36 @@
+.sideNavItem {
+    background-color: black;
+}
+
+.projectText {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.sideNavContainer {
+    width: 200px !important;
+}
+
+.navContainer {
+    top: 60px !important;
+}
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-left: 8px;
+    padding-right: 8px;
+  }
+
+.side-nav-item{
+    margin-top: 20px;
+    padding: 10px !important;
+    cursor: pointer;
+    outline: none !important;
+}
+.is-active{
+    background-color: rgb(211, 208, 208);
+
+}

@@ -1,0 +1,61 @@
+<div class="container">
+  <h2 mat-dialog-title>{{dialogTitle}}</h2>
+  <mat-dialog-content [formGroup]="projectForm">
+    <div>
+      <mat-form-field>
+        <span>Title<i class="mandatoryField">*</i></span>
+        <input class="title" type="text" formControlName="title" matInput>
+      </mat-form-field>
+      <span class="mandatoryField" *ngIf="isValid('title')">Title cannot be blank</span>
+    </div>
+    <div>
+      <mat-form-field>
+        <span>Description<i class="mandatoryField">*</i></span>
+        <textarea class="projectDesc" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"
+          formControlName="description" matInput></textarea>
+      </mat-form-field>
+      <span class="mandatoryField" *ngIf="isValid('description')">Description cannot be blank</span>
+    </div>
+    <mat-form-field *ngIf="update">
+      
+    <mat-select placeholder="Status" [compareWith]="compareStatus" [formControlName]="'status'" >
+   <mat-option *ngFor="let status of statusKeys" [value]="status.value">{{status.viewValue}}</mat-option>
+  </mat-select>
+    </mat-form-field>
+    <div>
+      <mat-form-field>
+        <mat-label>Select Members</mat-label>
+        <mat-select [compareWith]="compareFn" [formControlName]="'members'" (closed)="onSelectClose()"
+          placeholder="Select Members" multiple>
+          <!-- <div class="search">
+            <span class="fa fa-search searchIcn"></span>
+            <input class="searchUser" matInput type="text" placeholder="Search by Name" [(ngModel)]="searchTerm"
+              [ngModelOptions]="{standalone: true}" />
+          </div> -->
+          <mat-select-trigger>
+            <mat-chip-list>
+              <mat-chip class="memberChip" *ngFor="let user of members.value" [removable]="true"
+                (removed)="onMemberRemoved(user)">
+                <img class="avatar" [src]="user.image!= null ? user.image : emptyImgUrl"
+                  onerror="this.src='../../../assets/blank-profile-picture.png'">
+                {{ user.userName }}
+                <mat-icon class="icnRemove" matChipRemove>cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </mat-select-trigger>
+          <mat-option *ngFor="let user of activeUsers" [value]="user">
+            <img class="avatar" [src]="user.image!= null ? user.image : emptyImgUrl"
+              onerror="this.src='../../../assets/blank-profile-picture.png'">
+            {{user.userName}}
+          </mat-option>
+
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,79 @@
+<form [formGroup]="createTaskForm" (ngSubmit)="onSubmit()">
+
+  <mat-card-header>
+      <mat-card-title><h2>{{heading}}</h2></mat-card-title>
+  </mat-card-header>
+  <mat-dialog-content>
+
+    <mat-card-content>
+      <mat-form-field class="half-width">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title">
+        <mat-error *ngIf="!createTaskForm.controls['title'].valid && createTaskForm.controls['title'].touched">
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <mat-select placeholder="Priority" formControlName="priority">
+          <mat-option *ngFor="let p of priorities" [value]="p.value">{{p.viewValue}}</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="!createTaskForm.controls['priority'].valid && createTaskForm.controls['priority'].touched">
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <mat-select placeholder="Status" formControlName="status">
+          <mat-option *ngFor="let s of status" [value]="s.value">{{s.viewValue}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!createTaskForm.controls['status'].valid && createTaskForm.controls['status'].touched">
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <mat-select placeholder="Assignee" [compareWith]="compareFn" [formControlName]="'assignee'">
+          <mat-select-trigger>
+            <mat-chip-list>
+              <mat-chip class="memberChip">
+                <img class="avatar" [src]="selectedAssignee.value.image!= null ? selectedAssignee.value.image : emptyImgUrl"
+                  onerror="this.src='../../../assets/blank-profile-picture.png'">
+                {{ selectedAssignee.value.userName }}
+              </mat-chip>
+            </mat-chip-list>
+          </mat-select-trigger>
+          <mat-option *ngFor="let assignee of teamMates" [value]="assignee">
+            <img class="avatar" [src]="assignee.image!= null ? assignee.image : emptyImgUrl"
+              onerror="this.src='../../../assets/blank-profile-picture.png'">
+            {{assignee.userName}}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="!createTaskForm.controls['assignee'].valid && createTaskForm.controls['assignee'].touched">
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Description" rows="12" formControlName="description"></textarea>
+        <mat-error
+          *ngIf="!createTaskForm.controls['description'].valid && createTaskForm.controls['description'].touched">
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-dialog-actions class="form-group">
+        <button mat-button color="primary" type="submit" [disabled]="createTaskForm.invalid"
+                class="mat-background-primary text-floral-white">Submit
+        </button>
+        <button mat-button color="accent" type="submit" (click)="cancel()"
+                class="mat-background-primary text-floral-white">Cancel
+        </button>
+      </mat-dialog-actions>
+    </mat-card-content>
+  </mat-dialog-content>
+
+
+</form>
+
+
+

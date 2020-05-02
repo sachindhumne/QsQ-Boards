@@ -1,0 +1,392 @@
+.img {
+    width: 100%;
+    margin-bottom: 18%;
+  }
+  .card-picture {
+    // width: 23%;
+    margin-bottom: 2%;
+  }
+  .container {
+    min-height: 100%;
+    width: 100%;
+  }
+  .search-form {
+    width: 90%;
+  }
+  .noProjectsLabel {
+    padding: 40px;
+  }
+  .mat-sidenav-content {
+    overflow-x: hidden;
+  }
+  .searchIcn {
+    color: #da4453;
+  }
+  
+  .projectText {
+    color: black;
+    cursor: default;
+  }
+  
+  mat-nav-list {
+    margin: 4px;
+  }
+  
+  .mat-list-option:hover,
+  .mat-list-option:focus,
+  .mat-nav-list .mat-list-item:hover,
+  .mat-nav-list .mat-list-item:focus,
+  .mat-action-list .mat-list-item:hover,
+  .mat-action-list .mat-list-item:focus {
+    background: lightgray !important;
+  }
+  
+  .sideNavContainer {
+    width: 200px !important;
+    padding: 10px;
+  }
+  
+  .navContainer {
+    top: 60px !important;
+    overflow-x: hidden;
+    //position: relative !important;
+  }
+  
+  @media (max-width: 599px) {
+    .navContainer {
+      top: 56px !important;
+    }
+  }
+  
+  .projectButton {
+    float: right;
+    margin: 5px;
+    margin-right: 50px;
+    margin-left: 15px;
+  }
+  
+  .deleteIcon {
+    color: red;
+    float: right;
+    margin-right: 8px;
+  }
+  .editIcon {
+    color: #3f51b5;
+    float: right;
+    margin-right: 8px;
+  }
+  mat-icon {
+    vertical-align: middle;
+  }
+  
+  .searchFilter {
+    float: right;
+    vertical-align: middle;
+    margin-top: 5px;
+  }
+  .searchProject {
+    vertical-align: middle;
+    margin-top: 5px;
+    float: right;
+    margin: 5px;
+    font-size: 20px;
+    width: 150px;
+  }
+  .cardContainer {
+    display: inline;
+  }
+  
+  button {
+    float: center;
+  }
+  
+  .bottomCards {
+    width: 1024px;
+    margin-left: 50px;
+    margin-bottom: 4px;
+  }
+  
+  mat-list-item,
+  mat-list-base,
+  .sideNavItem {
+    padding-top: none !important;
+    cursor: default !important;
+    & :hover,
+    :focus {
+      background-color: transparent !important;
+    }
+  }
+  
+  .card,
+  mat-card {
+    display: inline-block;
+  }
+  .topCard {
+    text-align: center;
+    width: 275px;
+    border: 10px;
+    margin-left: 50px;
+    padding: 20px;
+    height: 140px;
+    text-align: left;
+    margin-bottom: 50px;
+  }
+  .topCardContainer {
+    display: inline;
+  }
+  @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+  body {
+    margin: 30px;
+  }
+  .search {
+    float: right;
+    position: relative;
+    color: #aaa;
+    font-size: 16px;
+    width: 180px;
+  }
+
+  .commentIcon {
+    color: mediumseagreen;
+    margin-right: 4px;
+  }
+  
+  .hoverClass:hover {
+    cursor: pointer;
+    outline: none !important;
+  }
+  
+  .search input {
+    margin-top: 5px;
+    height: 34px;
+    width: 100%;
+    background: #fcfcfc;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+  }
+  
+  .search input {
+    text-indent: 32px;
+  }
+  .search .fa-search {
+    vertical-align: middle;
+    position: absolute;
+    margin-top: 5px;
+    top: 10px;
+    left: 10px;
+  }
+  
+  #profileImage {
+    display: inline-block;
+    width: 60px;
+    height: 50px;
+    border-radius: 10%;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    margin: 4px;
+  }
+  #projectImage {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    font-size: 30px;
+    background-color: #3f51b5;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    margin: 4px;
+    & :hover,
+    :focus {
+      background-color: transparent !important;
+    }
+    cursor: default;
+  }
+  
+  #bottomprofileImage {
+    width: 60px;
+    height: 50px;
+    border-radius: 10%;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    margin: 4px;
+  }
+  
+  mat-card-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 300px;
+  }
+  .topProjectDescription {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 50px;
+    width: 275px;
+  }
+  
+  .inlineDisplay {
+    display: inline;
+  }
+  
+  .bottomProjectTitle {
+    font-size: 24px;
+    font-weight: 100;
+  }
+  .flex-container {
+    display: flex;
+    height: 30px;
+    width: 800px;
+  }
+  
+  .titleDescriptionContainer {
+    margin-left: 10px;
+    & .mat-title {
+      margin-bottom: 2px !important;
+      font-weight: 500 !important;
+    }
+  }
+  .topButtons {
+    padding: 20px;
+  }
+  
+  mat-icon:hover {
+    cursor: pointer;
+  }
+  .owner {
+    margin-right: 30px;
+  }
+  
+  .bottomProjectTitle {
+    font-size: 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 600px;
+  }
+  
+  .bottomDescriptionContainer {
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 600px;
+  }
+  
+  .bottomDeleteIcon {
+    text-align: right;
+    float: right;
+  }
+  
+  .bottomOwner {
+    text-align: right;
+    float: right;
+  }
+  .topTitlecontainer {
+    min-height: 110px;
+  }
+  
+  .topDescriptionContainer {
+    // height: 75px;
+    // font-size: 12px;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    // width: 200px;
+  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  .memberChip {
+    background: #3f51b5;
+    color: white;
+    margin-left: 15px;
+    margin-bottom: 10px;
+  }
+  table {
+    width: 95%;
+    align-self: center;
+  }
+
+  td{
+    align-items: center;
+  }
+
+  .sideNavContainer {
+    width: 200px !important;
+    padding: 10px;
+  }
+  .home-nav-item{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    & span {
+      cursor: pointer;
+    }
+  }
+
+  .noTasksLabel {
+    padding: 40px;
+  }
+
+  .avatar {
+    vertical-align: middle;
+    width: 38px;
+    height: 38px;
+  }
+
+  .projectText{
+    margin-left: 5px;
+    font-size: larger;
+    color: #3f51b5;
+  }
+
+
+  .taskContainer {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+.Done {
+  background: green;
+  color: white;
+}
+
+.New {
+    background: #ff9504;
+    color: white;
+}
+
+.Progress {
+  background: #3f51b5;
+  color: white;
+}
+
+.High {
+  color: red;
+}
+
+.Medium {
+  color: #ff9504;
+}
+
+.Low {
+  color: green;
+}
+
+.mat-icon{
+  float: left;
+  padding-left: 8px;
+}

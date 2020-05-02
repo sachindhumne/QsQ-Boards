@@ -1,0 +1,133 @@
+table {
+  width: 95%;
+  align-self: center;
+  cursor: pointer;
+}
+
+  td{
+    align-items: center;
+  }
+
+  .taskChip{
+    background: #3f51b5;
+    color: white;
+    border-radius: 8px;
+    height: 5px;
+}
+
+.storyChip{
+  background: #84858f;
+  color: white;
+  border-radius: 8px;
+  height: 5px;
+}
+
+
+
+.title {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 10% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.search {
+  float: left;
+  position: relative;
+  color: #aaa;
+  font-size: 16px;
+  width: 180px;
+}
+
+.searchIcn {
+  color: #da4453;
+}
+
+.hoverClass:hover {
+  cursor: pointer;
+  outline: none !important;
+}
+
+.search input {
+  margin-top: 5px;
+  height: 34px;
+  width: 100%;
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+}
+
+.search input {
+  text-indent: 32px;
+}
+.search .fa-search {
+  vertical-align: middle;
+  position: absolute;
+  margin-top: 5px;
+  top: 10px;
+  left: 10px;
+}
+.backlog-search{
+  padding: 20px;
+  height: 50px;
+  align-items: center;
+}
+
+.exportButton {
+  float: right;
+  margin: 5px;
+  position: relative;
+  margin-right: 50px;
+}
+
+.backlogTable {
+  display: flex;
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Done {
+  background: green;
+  color: white;
+}
+
+.New {
+    background: #ff9504;
+    color: white;
+}
+
+.Progress {
+  background: #3f51b5;
+  color: white;
+}
+
+.High {
+  color: red;
+}
+
+.Medium {
+  color: #ff9504;
+}
+
+.Low {
+  color: green;
+}
+.avatar {
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  border-radius: 16px;
+}

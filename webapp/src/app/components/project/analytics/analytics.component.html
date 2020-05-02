@@ -1,0 +1,46 @@
+
+   <div class="dropDown">
+    <mat-select [(ngModel)]="optionValue">
+     <mat-option value="userstories" selected>User Stories</mat-option>
+     <mat-option value="tasks" >Tasks</mat-option>
+    </mat-select>           
+</div>
+  
+
+<ng-container *ngIf="optionValue == 'userstories'">
+
+  <div class="analyticsContainer">
+  <div class="chartContainerLeft">
+    <div class="chart1"><highcharts-chart class="userStorychart1"
+      [Highcharts] = "highcharts" 
+      [options] = "chartOptions">
+   </highcharts-chart>
+  </div>
+    </div>
+    <div class="chartContainerRight">
+      <div class="chart2"><highcharts-chart class="userStorychart2"
+        [Highcharts] = "burnDownHighcharts" 
+        [options] = "burnDownChartOptions">
+     </highcharts-chart></div>  
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="optionValue == 'tasks'">
+  <div class="analyticsContainer">
+  <div class="chartContainerLeft">
+   <div class="chart1"><highcharts-chart class="taskChart1"
+    [Highcharts] = "taskPieChart" 
+    [options] = "taskPieChartOptions">
+ </highcharts-chart>
+</div>
+  </div>
+  <div class="chartContainerRight">
+  <div class="chart2"><highcharts-chart class="taskChart2"
+    [Highcharts] = "taskBarGraph" 
+    [options] = "taskBarGraphOptions">
+ </highcharts-chart></div>
+</div>
+</div>
+</ng-container>

@@ -1,0 +1,119 @@
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+.overview-title {
+  align-self: center;
+  width: 100%;
+  margin-right: 0%;
+}
+
+.overview-card {
+  margin-top: 10px;
+}
+
+.aboutContainer {
+  top: 60px !important;
+  overflow-x: hidden;
+  //position: relative !important;
+}
+
+@media (max-width: 599px) {
+  .aboutContainer {
+    top: 56px !important;
+  }
+}
+
+.right-card {
+  margin-top: 1%;
+}
+
+mat-card-content {
+  width: 100%;
+}
+
+.content-title {
+  font-weight: 500;
+  margin-top: 10px;
+  height: 30px;
+  font-size: larger;
+}
+
+.about-content-title{
+  font-weight: 500;
+  margin-top: 10px;
+  height: 30px;
+  font-size: x-large;
+}
+.statusChip {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.btnEdit {
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+#profileImage {
+  display: inline-block;
+  width: 60px;
+  height: 50px;
+  border-radius: 10%;
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  margin: 20px 0;
+}
+
+.projectTitle {
+  margin-left: 20px;
+  font-size: larger;
+  font-weight: 500;
+}
+.avatar {
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+.memberChip {
+  background: #84858f;
+  color: white;
+  width: auto !important;
+  & .avatar {
+    border-radius: 20px;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.ownerChip {
+  background: #3f51b5;
+  color: white;
+  & .avatar {
+    border-radius: 20px;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.project-stats-card{
+  width: 40%;
+  margin-top: 3%;
+  margin-left: 6%;
+}
+
+.project-stats-content{
+  width: 100%;
+}
+
+.stats-breakdown-card{
+  width: 80%;
+}
+
+.proj-stats-overview{
+  text-align: center;
+  font-size: large;
+}
+

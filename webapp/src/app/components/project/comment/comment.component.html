@@ -1,0 +1,51 @@
+<form [formGroup]="createCommentForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+  <mat-card-header>
+    <mat-card-title
+      ><h2>{{ currentTask.title }}</h2></mat-card-title
+    >
+  </mat-card-header>
+  <mat-dialog-content>
+    <mat-card-content>
+      <mat-form-field class="full-width commentsFormContainer">
+        <textarea
+          matInput
+          placeholder="Add Comments ..."
+          rows="3"
+          formControlName="comment"
+        ></textarea>
+      </mat-form-field>
+    </mat-card-content>
+  
+  <button mat-button color="primary" type="submit" [disabled]="createCommentForm.invalid"
+  class="mat-raised-button mat-primary commentButton">Post
+        </button>
+    </mat-dialog-content>
+</form>
+<div *ngFor="let taskComment of taskComments">
+  <mat-card class="bottomCards">
+    <span>
+      <mat-card-content class="card-container-left">
+        <div class="bottomTitleContainer">
+
+          <label></label>
+        </div>
+       
+          <div class="authorContainer">
+            <div id="bottomprofileImage">
+                <img
+                          class="avatar"
+                          [src]="
+                          taskComment.author.image != null
+                              ? taskComment.author.image
+                              : emptyImgUrl
+                          "
+                          onerror="this.src='../../../assets/blank-profile-picture.png'"
+                        />
+            </div>
+            <div class="mat-title authorName">{{taskComment.author.userName}}</div>
+          </div>
+          <div class="commentContainer">{{ taskComment.comment }}</div>
+      </mat-card-content>
+    </span>
+  </mat-card>
+</div>

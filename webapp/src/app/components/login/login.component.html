@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+  <img class="qsqIcon" src="../../../assets/qsqlogo_blue.png" alt="QSQ Boards" />
+  <span class="qsqboards">Qsqboards</span>
+  </mat-toolbar>
+<div class="loginContainer">
+  <!-- <mat-toolbar> -->
+    <!-- <button mat-button (click)="navigateToHome()">
+      <label class="profileName">Home</label>
+    </button> -->
+    <!-- <img class="qsqIcon" src="../../../assets/qsqlogo_blue.png" alt="QSQ Boards" />
+    <span class="qsqboards">Qsqboards</span>
+  </mat-toolbar> -->
+
+  <div class="formcontainer">
+    <div class="formbody">
+      <form [formGroup]="loginForm">
+        <div class="header">Welcome</div>
+        <div class="oAuthContainer">
+          <img (click)="socialSignIn('google')" class="socialButtons googleIcon"
+            src="../../../assets/btn_google_signin_dark_normal_web.png" alt="Sign in with Google" />
+        </div>
+        <div class="oAuthContainer fbContainer">
+          <button mat-button class="btn-facebook" (click)="socialSignIn('facebook')" class="background-fb socialButtons">
+            <i class="fa fa-facebook-square fa-2x fbicon" aria-hidden="true"></i><span> Login with
+            Facebook</span></button>
+        </div>
+        <div class="separator">OR</div>
+        <div class="userNameContainer">
+          <mat-form-field>
+            <input type="text" formControlName="userName" matInput placeholder="Username / Email">
+          </mat-form-field>
+          <span *ngIf="isValid('userName')">Username cannot be blank</span>
+        </div>
+        <div>
+          <mat-form-field>
+            <input type="password" formControlName="password" matInput placeholder="Password">
+          </mat-form-field>
+          <span *ngIf="isValid('password')">Password cannot be blank</span>
+        </div>
+        <div class="errorMessage">
+          <strong>{{successMessage}}</strong>
+        </div>
+        <div class="loginBtnContainer">
+          <button mat-raised-button color="primary" class="form-btn" (click)="login()">Log In</button>
+          <div class="notMemberContainer">
+            <a class="alreadyMember" (click)="movetoregister()">Not a member yet? click here to register!</a>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

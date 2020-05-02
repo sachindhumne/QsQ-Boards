@@ -1,0 +1,79 @@
+<div *ngIf="projectDetails">
+  <mat-toolbar>
+    <div id="profileImage" [ngStyle]="{'background': '#3f51b5'}">
+      {{getProjectTitleAvatar()}}
+    </div>
+    <span class=" projectTitle">{{projectDetails.title}}</span>
+  </mat-toolbar>
+  <div class="aboutContainer" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="50px">
+    <mat-card fxFlex="0 1 calc(60% - 10px)" class="overview-card">
+      <mat-card-content class="about-content-title">
+        About this project
+      </mat-card-content>
+      <mat-card-content>
+        {{projectDetails.description}}
+      </mat-card-content>
+      <mat-card-content class="content-title">
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-chip class="statusChip">
+          {{projectDetails.status}}
+        </mat-chip>
+      </mat-card-footer>
+    </mat-card>
+    <mat-card fxFlex="0 1 calc(30% - 20px)" class="right-card">
+      <mat-card-content>
+        <div class="content-title">
+          Owner
+        </div>
+        <mat-chip class="ownerChip" [removable]="false">
+          <img class="avatar" [src]="projectDetails.owner.image!= null ? projectDetails.owner.image : emptyImgUrl"
+            onerror="this.src='../../../assets/blank-profile-picture.png'">
+          {{ projectDetails.owner.userName }}
+        </mat-chip>
+        <div class="content-title">
+          Team Members
+        </div>
+        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+          <mat-chip class="memberChip" *ngFor="let user of projectDetails.members" [removable]="false">
+            <img class="avatar" [src]="user.image!= null ? user.image : emptyImgUrl"
+              onerror="this.src='../../../assets/blank-profile-picture.png'">
+            {{ user.userName }}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-card  class="project-stats-card">
+    <mat-card-content class="about-content-title">
+      Project Stats
+    </mat-card-content>
+    <mat-card-content class="project-stats-content" fxLayoutGap="40px">
+      <mat-card fxFlex="0 1 calc(50% - 10px)" class="stats-breakdown-card" >
+        <mat-card-content class="proj-stats-overview" fxFlex="0 1 calc(50% - 10px)">
+          {{allUserStories.length}} Stories
+        </mat-card-content>
+        <mat-divider [vertical]="true"></mat-divider>
+        <mat-card-content class="proj-stats-overview" fxFlex="0 1 calc(50% - 10px)">
+          {{totalTaskCount}} Tasks
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxFlex="0 1 calc(25% - 10px)" class="proj-stats-overview">
+        <mat-card-content fxFlex="0 1 calc(50% - 10px)">
+          {{doneTaskCount}} Done
+        </mat-card-content>
+        <mat-card-content>
+          <img src="../../../assets/white-check-icon-17.jpg" height="45" width="45"/> 
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxFlex="0 1 calc(25% - 10px)" class="proj-stats-overview">
+        <mat-card-content fxFlex="0 1 calc(50% - 10px)">
+          {{pendingTaskCount}} Created
+        </mat-card-content>
+        <mat-card-content>
+          <img src="../../../assets/pending-clock.png" height="40" width="40"/> 
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

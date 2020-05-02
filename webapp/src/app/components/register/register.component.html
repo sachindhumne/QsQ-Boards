@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+    <img class="qsqIcon" src="../../../assets/qsqlogo_blue.png" alt="QSQ Boards" />
+    <span class="qsqboards">Qsqboards</span>
+    </mat-toolbar>
+<div class="registerContainer">
+    <div class="formcontainer">
+        <div class="formbody">
+            <form [formGroup]="myForm">
+                <div class="header">Register</div>
+                <div>
+                    <mat-form-field>
+                        <input type="text" formControlName="emailId" matInput placeholder="Email" id="emailId">
+                    </mat-form-field>
+                    <span *ngIf="isValid('emailId')">Entered email is invalid</span>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input type="text" formControlName="userName" matInput placeholder="Username" id="userName">
+                    </mat-form-field>
+                    <span *ngIf="isValid('userName')">Username is required</span>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input type="password" formControlName="password" matInput placeholder="Password" id="pass">
+                    </mat-form-field>
+                    <span *ngIf="isValid('password')">Password is mandatory and should be atleast 8 characters</span>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input type="password" formControlName="cnfpass" matInput placeholder="Re-enter Password"
+                            id="cnfpass">
+                    </mat-form-field>
+                    <span *ngIf="isValid('cnfpass')">Password and confirm password should match</span>
+                </div>
+
+
+                <div class="signUpContainer">
+                    <button mat-raised-button color="primary" class="form-btn" (click)="register()">Sign Up</button>
+
+                </div>
+
+                <div class="errorMessage">
+                    <strong>{{successMessage}}</strong> 
+                </div>
+                <div class="alreadyMemberContainer">
+                    <a class="alreadyMember" (click)="movetologin()">Already a member? click here to login!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

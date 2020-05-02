@@ -1,0 +1,20 @@
+.dropDown{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    background-color: white;
+}
+
+
+mat-select{
+    width: 15%;
+}
+
+.analyticsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}

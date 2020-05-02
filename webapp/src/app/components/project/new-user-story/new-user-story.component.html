@@ -1,0 +1,62 @@
+<form [formGroup]="createStoryForm" (ngSubmit)="onSubmit()">
+
+    <mat-card-header>
+      <mat-card-title><h2>Create A User Story</h2></mat-card-title>
+    </mat-card-header>
+    <mat-dialog-content>
+
+      <mat-card-content>
+        <mat-form-field class="half-width">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Title" formControlName="title">
+          <mat-error *ngIf="!createStoryForm.controls['title'].valid && createStoryForm.controls['title'].touched">
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <mat-select placeholder="Priority" formControlName="priority">
+            <mat-option *ngFor="let p of priorities" [value]="p.value">{{p.viewValue}}</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="!createStoryForm.controls['priority'].valid && createStoryForm.controls['priority'].touched">
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input matInput placeholder="Status" formControlName="status">
+          <mat-error *ngIf="!createStoryForm.controls['status'].valid && createStoryForm.controls['status'].touched">
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input matInput placeholder="Story Points" formControlName="storyPoints" pattern="[0-9]*">
+          <mat-error
+            *ngIf="!createStoryForm.controls['storyPoints'].valid && createStoryForm.controls['storyPoints'].touched">
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Description" rows="12" formControlName="description"></textarea>
+          <mat-error
+            *ngIf="!createStoryForm.controls['description'].valid && createStoryForm.controls['description'].touched">
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-dialog-actions class="form-group">
+          <button mat-button color="primary" type="submit" [disabled]="createStoryForm.invalid"
+                  class="mat-background-primary text-floral-white">Submit
+          </button>
+          <button mat-button color="accent" type="submit" (click)="cancel()"
+                  class="mat-background-primary text-floral-white">Cancel
+          </button>
+        </mat-dialog-actions>
+      </mat-card-content>
+    </mat-dialog-content>
+
+
+</form>
+
+
+
