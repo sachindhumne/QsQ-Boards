@@ -1,4 +1,8 @@
 # QSQ Boards
+
+## Preview
+**[View Live Preview](https://youtu.be/q_oB-u11yxg)**
+
 ----------------------------------------------------------
 ## Technology Stack (MEAN)
 * MongoDB
